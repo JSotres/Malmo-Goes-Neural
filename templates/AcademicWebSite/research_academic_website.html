@@ -1,0 +1,49 @@
+{% extends 'base_academic_website.html' %}
+{% load static %}
+{% block content %}
+
+<header class="jumbotron jumbotron-fluid bg-white text-black text-center">
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <!-- Heading -->
+    <h1 class="display-4">Research Directions</h1>
+    <!-- Icon Divider -->
+    <div class="row">
+      <div class="col"><hr class="custom-divider2"></div>
+      <div class="col-auto">
+	<i class="fas fa-align-justify"></i>
+      </div>
+      <div class="col"><hr class="custom-divider2"></div>
+    </div>
+    
+  </div>
+</header>
+
+
+
+<div class="container">
+
+  <div class="row align-items-center justify-content-end mb-5">
+
+    {% for field in object_list %}
+
+    <div class="col mb-5">
+      <div class="card text-center" style="width: 18rem;">
+	<img src="{{ field.main_image.url }}" class="card-img-top" alt="{{ field.topic }}" width="100%" height="225">
+	<div class="card-body">
+	  <h5 class="card-title">{{ field.topic }}</h5>
+	  <p class="card-text">{{ field.short_description }}</p>
+	  <a href="{% url 'researchfield_academic_website' field.pk %}" class="btn btn-secondary">Read more</a>
+	</div>
+      </div>
+    </div>
+
+  
+
+    {% endfor %}
+
+    </div>
+  
+</div>
+  
+
+{% endblock content %}

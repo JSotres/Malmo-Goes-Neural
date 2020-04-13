@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<header class="jumbotron jumbotron-fluid bg-primary text-white">
+  <div class="container d-flex align-items-center pt-5 flex-column">
+
+    <h1 class="text-uppercase mb-0"><strong>Who are we?</strong></h1>
+    
+    <!-- Icon Divider -->
+    <div class="row p-2">
+      <div class="col"><hr class="custom-divider"></div>
+      <div class="col-auto">
+	<i class="fas fa-database"></i>
+      </div>
+      <div class="col"><hr class="custom-divider"></div>
+    </div>
+
+  </div>
+</header>
+
+<div class="container-fluid d-flex text-white">
+  <div class="row no-gutters p-2">
+    <div class="col-md-4">
+      <img src="{% static 'images/sotres.jpeg' %}" class="rounded float-left" height="150">
+    </div>
+    <div class="col-md-8">
+      <h5><strong>Javier Sotres</strong></h5>
+      <p>PhD in Physics. Associate Professor at Malmo University</p>
+    </div>
+  </div>
+
+  <div class="row no-gutters p-2">
+    <div class="col-md-4">
+      <img src="{% static 'images/juan.jpeg' %}" class="rounded float-left" height="150">
+    </div>
+    <div class="col-md-8">
+      <h5><strong>Juan F. Gonzalez-Martinez</strong></h5>
+      <p>PhD in Physics. Researcher at Malmo University</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock content %}

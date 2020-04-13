@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center">
+  <div class="container p-5 d-flex align-items-center flex-column">
+    <!-- Avatar Image -->
+    <img class="masthead-avatar mb-5" src="{% static 'images/MGN2.svg' %}" alt="" width="150rem">
+    <!-- Heading -->
+    <h1 class="masthead-heading text-uppercase mb-0 p-2"><b>Malmo Goes Neural</b></h1>
+    <!-- Icon Divider -->
+    <div class="row p-2">
+      <div class="col"><hr class="custom-divider"></div>
+      <div class="col-auto">
+	<i class="fas fa-database"></i>
+      </div>
+      <div class="col"><hr class="custom-divider"></div>
+    </div>
+    
+    <!-- Subheading -->
+    <p class="font-weight-light mb-0">We are a couple of Malmoe (Sweden) based researchers/physicists that share a passion for Computer Science in general, and for AI, Computer Vision and IoT in particular.</p>
+    <p class="font-weight-light mb-0">This site is just a playground for some of our side-projects, feel free to have a look at them!</p>
+  </div>
+</header>
+
+
+{% endblock content %}
