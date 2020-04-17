@@ -35,9 +35,9 @@
           <img src="{{ field.project_image.url }}" class="card-img-top" alt="{{ field.topic }}" style="width: 14rem;">
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ field.name }}</h5>
+          <h3 class="card-title">{{ field.name }}</h3>
           <p class="card-text">{{ field.short_description|safe }}</p>
-          <a href="{% url field.url %}" class="btn btn-primary">Explore!</a>
+          <a href="{% url 'project' field.pk %}" class="btn btn-primary">Explore!</a>
         </div>
       </div>
     </div>

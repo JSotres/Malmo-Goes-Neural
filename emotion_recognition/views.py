@@ -1,13 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView
 from .forms import FaceForm
-from .models import FaceMood, FaceProject
+from .models import FaceMood
 from .local_python_scripts import ev_mood
-
-
-class EmotionRecognitionExplanationView(ListView):
-    template_name = 'emotion_recognition.html'
-    model = FaceProject
 
 
 def EmotionRecognitionApplicationView(request):

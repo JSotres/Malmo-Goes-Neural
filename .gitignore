@@ -17,3 +17,6 @@ logs
 Pipfile
 Pipfile.lock
 */__pycache__
+venv
+**/venv
+mgn.zip

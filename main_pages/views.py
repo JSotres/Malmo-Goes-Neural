@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView, CreateView, ListView
+from django.views.generic import TemplateView, CreateView, ListView, DetailView
 from .models import ContactRequest, Project
 
 
@@ -24,6 +24,11 @@ class ProjectListView(ListView):
 
     def __str__(self):
         return self.name
+
+
+class ProjectView(DetailView):
+    model = Project
+    template_name = 'project.html'
 
 
 class AboutPageView(TemplateView):

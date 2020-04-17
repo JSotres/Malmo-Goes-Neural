@@ -7,7 +7,7 @@ from django.db import models
 class ProjectAdmin(admin.ModelAdmin):
 
     fieldsets = [
-        ("Name", {"fields": ["name"]}),
+        ("Name", {"fields": ["name", "longName"]}),
         ("Type", {"fields": ["project_type"]}),
         ("Description", {"fields": ["short_description", "long_description"]}),
         ("URL", {"fields": ["url"]}),

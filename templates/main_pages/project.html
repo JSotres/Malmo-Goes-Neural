@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center">
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <!-- Heading -->
+    <h1 class="display-4">{{ object.longName }}</h1>    
+  </div>
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <a href="{% url object.url %}" class="btn btn-secondary">Try it out!</a>  
+  </div>
+</header>
+
+<div class="container bg-white">
+  {{ object.long_description|safe }}
+</div>
+
+{% endblock content %} 
+
