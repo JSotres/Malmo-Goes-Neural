@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 
-<header class="jumbotron jumbotron-fluid bg-primary text-white text-center">
+<header class="jumbotron jumbotron-fluid bg-primary text-white">
   <div class="container p-5 d-flex align-items-center flex-column">
     <!-- Avatar Image -->
     <img class="masthead-avatar mb-5" src="{% static 'images/MGN2.svg' %}" alt="" width="150rem">
@@ -16,10 +16,19 @@
       </div>
       <div class="col"><hr class="custom-divider"></div>
     </div>
-    
+  </div>
+
+  <div class="container flex-column justify-content-end">  
     <!-- Subheading -->
-    <p class="font-weight-light mb-0">We are a couple of Malmoe (Sweden) based researchers/physicists that share a passion for Computer Science in general, and for AI, Computer Vision and IoT in particular.</p>
-    <p class="font-weight-light mb-0">This site is just a playground for some of our side-projects, feel free to have a look at them!</p>
+    <p class="font-weight-light mb-0">We are a couple of Spanish researchers/physicists based in Malmö (Sweden) that share an interest for Computer Science in general, and for AI, Computer Vision and IoT in particular.</p>
+    <p></p>
+    <p class="font-weight-light mb-0">This site was born with the aim of just being a playground for investigating how to develop web applications to deploy machine/deep learning models.</p>
+  </div>
+  <div class="container align-items-center"> 
+    <div class="row justify-content-center">
+      <a href="{% url 'project_list' %}" class="btn btn-secondary">Feel free to have a look at our projects!</a>
+    </div>
+    
   </div>
 </header>
 
