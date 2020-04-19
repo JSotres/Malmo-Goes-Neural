@@ -26,13 +26,13 @@
       <form action="{% url 'simpsons_go_neural_application' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <p>
-          <input id="id_image" type="file" name="image" class="form-control-file" onchange="loadFile(event)">
+          <input id="id_image" type="file" name="simpson_input_picture" class="form-control-file" onchange="loadFile(event)">
         </p>
         <p><input class="" type="submit" value="Submit" /></p>
       </form>
     </div>
     <div class="col align-self-center">
-      <img id="output" class="img-fluid w-100" />
+      <img id="output" class="img-fluid w-100" src={{ simpsonEx.simpson_output_picture.url }}/>
     </div>
   </div>
 </div>

@@ -2,7 +2,5 @@ from django import forms
 from .models import SimpsonCharacter
 
 
-class SimpsonForm(forms.ModelForm):
-    class Meta:
-        model = SimpsonCharacter
-        fields = ('simpson_input_picture',)
+class SimpsonForm(forms.Form):
+    simpson_input_picture = forms.ImageField()

@@ -7,11 +7,11 @@ import keras
 from tensorflow.keras.models import load_model
 from keras.preprocessing.image import img_to_array
 
-
+# img = '/media/emotionrecognition/faceinputpictures/juan.jpeg'
+# pk = 1
 
 def ev_mood(img, pk):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-    print(BASE_DIR)
     # load our serialized model from disk
     prototxt = BASE_DIR + '/emotion_recognition/deploy.prototxt.txt'
     model = BASE_DIR + '/emotion_recognition/res10_300x300_ssd_iter_140000.caffemodel'
@@ -29,7 +29,11 @@ def ev_mood(img, pk):
     # load the input image and construct an input blob for the image
     # by resizing to a fixed 300x300 pixels and then normalizing it
     img = BASE_DIR + img
+    print('hola')
+    print(img)
     image = cv2.imread(img)
+    # cv2.imshow('image', image)
+    # cv2.waitKey(0)
     (h, w) = image.shape[:2]
     blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0,
                                  (300, 300), (104.0, 177.0, 123.0))
@@ -74,6 +78,8 @@ def ev_mood(img, pk):
             cv2.rectangle(image, (startX, startY), (endX, endY), (0, 0, 255), 2)
             gray = cv2.putText(image, predicted_label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
 
+    # cv2.imshow('image',gray)
+    # cv2.waitKey(0)
     savepath = 'emotionrecognition/faceoutputpictures/'
     fullsavepath = BASE_DIR + '/media/emotionrecognition/faceoutputpictures/'
     savestring = fullsavepath + 'output.jpg'
@@ -81,3 +87,5 @@ def ev_mood(img, pk):
     cv2.imwrite(savestring, gray)
     savestring2 = savepath + 'output.jpg'
     return savestring2
+
+# ev_mood(img, pk)

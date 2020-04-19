@@ -9,19 +9,26 @@ from .local_python_scripts import ev_simpson
 def SimpsonsGoNeuralApplicationView(request):
     if request.method == "POST":
         form = SimpsonForm(request.POST, request.FILES)
+        print('aqui0')
         if form.is_valid():
-            simpsonEx = SimpsonCharacter.objects.get(pk=1)
+            print('aqui')
+            simpsonEx = SimpsonCharacter()
+            # print(form.cleaned_data['simpson_input_picture'])
+            # simpsonEx.simpson_input_picture = form.cleaned_data['simpson_input_picture']
             simpsonEx.simpson_input_picture = request.FILES['simpson_input_picture']
             simpsonEx.save()
-            simpsonEx.simpson_output_picture = ev_simpson(simpsonEx.simpson_input_picture.url, simpsonEx.pk)
+            print(simpsonEx.simpson_input_picture.url)
+            # simpsonEx.simpson_input_picture = form.simpson_input_picture
+            #simpsonEx.save()
+            simpsonEx.simpson_output_picture = ev_simpson(simpsonEx.simpson_input_picture.url,
+                simpsonEx.pk)
             simpsonEx.save()
-            return redirect('simpsons_go_neural_application', pk=1)
-    # else:
-    	# form = SimpsonForm()
+            print(simpsonEx.simpson_input_picture.url)
+            print(simpsonEx.simpson_output_picture.url)
+            # return redirect('simpsons_go_neural_application', pk=simpsonEx.pk)
+            return render(request, 'simpsons_go_neural_application.html',
+                {'simpsonEx': simpsonEx})
+    else:
+        return render(request, 'simpsons_go_neural_application.html',
+            {'simpsonEx': SimpsonCharacter})
     
-    # return render(request, 'simpsons_go_neural_application.html', {'form': form})
-    return render(request, 'simpsons_go_neural_application.html')
-    # return HttpResponseForbidden('allowed only via POST')
-    # , {'form': form}
-    # else:
-        # form = SimpsonForm()
