@@ -20,3 +20,7 @@ Pipfile.lock
 venv
 **/venv
 mgn.zip
+MalmoGoesNeural.sql
+simpsons_go_neural/cascade.xml
+simpsons_go_neural/model_weightsk.h5
+simpsons_go_neural/modelk.json
