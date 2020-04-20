@@ -13,12 +13,8 @@ from tensorflow.keras.preprocessing import image  #load images easily
 
 def ev_simpson(imagetest, pk):
 	BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-	print('aqui28')
-	print(BASE_DIR)
-	print(imagetest)
 	imagetest = BASE_DIR + imagetest
-	print(imagetest)
-
+	
 	target_names = ['Abraham Grampa Simpson', 'Agnes Skinner', 'Apu Nahasapeemapetilon',
 	'Barney Gumble', 'Bart Simpson', 'Brandine Spuckler','Carl Carlson',
 	'Charles Montgomery Burns', 'Chief Wiggum', 'Cletus Spuckler','Comic Book Guy',
@@ -35,9 +31,7 @@ def ev_simpson(imagetest, pk):
 	modeljson = BASE_DIR + '/simpsons_go_neural/modelk.json'
 	modelweights = BASE_DIR + '/simpsons_go_neural/model_weightsk.h5'
 	cascadefile = BASE_DIR + '/simpsons_go_neural/cascade.xml'
-	print(modeljson)
-	print(modelweights)
-
+	
 	json_file = open(modeljson, 'r')
 	loaded_model_json = json_file.read()
 	json_file.close()
@@ -55,13 +49,32 @@ def ev_simpson(imagetest, pk):
 	color1 = cv2.imread(imagetest, cv2.IMREAD_COLOR)
 	img = np.array(image.load_img(imagetest, color_mode="grayscale"))
 	gray = cv2.cvtColor(color1, cv2.COLOR_BGR2GRAY)
+
 	imgk = np.array(image.load_img(imagetest))
-	faces = faceCascade.detectMultiScale(img, 1.02, 8, minSize=(50,50))
+	width = img.shape[1]
+	print(width)
+	height = img.shape[0]
+	print(height)
+	new_width = 1000
+	factor = new_width/width
+	new_height = int(height*factor)
+	dim = (new_width, new_height)
+	img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+	imgk = cv2.resize(imgk, dim, interpolation = cv2.INTER_AREA)
+	color1 = cv2.resize(color1, dim, interpolation = cv2.INTER_AREA)
+	print(img.shape[1])
+	print(img.shape[0])
+	print(imgk.shape[1])
+	print(imgk.shape[0])
+	print(color1.shape[1])
+	print(color1.shape[0])
+
+	faces = faceCascade.detectMultiScale(img, 1.02, 8, minSize=(80,80))
 
 	for (x, y, w, h) in faces:
 		w1=int(1.0*w)
-		h1 = int(h+0.2*y)
-		y1=int(y-0.1*y)
+		h1 = int(h+0.4*y)
+		y1=int(y-0.2*y)
 		fc = imgk[y1:y1+h1, x:x+w1]
 
 		roi1 = cv2.resize(fc, (sz2, sz1))
@@ -75,7 +88,6 @@ def ev_simpson(imagetest, pk):
 	savepath = 'simpsonCharacter/simpsonOutputPictures/'
 	fullsavepath = BASE_DIR + '/media/simpsonCharacter/simpsonOutputPictures/'
 	savestring = fullsavepath + 'output' + str(pk) + '.jpg'
-	print(savestring)
 	cv2.imwrite(savestring, color1)
 	savestring2 = savepath + 'output' + str(pk) + '.jpg'
 	return savestring2
