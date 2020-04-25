@@ -2,13 +2,13 @@
 {% load static %}
 {% block content %}
 
-<header class="jumbotron jumbotron-fluid bg-primary text-white text-center">
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center pb-0">
   <div class="container pt-5 d-flex align-items-center flex-column">
     <!-- Heading -->
     <h1 class="display-4">{{ object.longName }}</h1>    
   </div>
   <div class="container pt-5 d-flex align-items-center flex-column">
-    <a href="{% url object.url %}" class="btn btn-secondary">Try it out!</a>  
+    <a href="{% url object.url %}" class="btn btn-secondary btn-outline-light">Try it out!</a>  
   </div>
 </header>
 

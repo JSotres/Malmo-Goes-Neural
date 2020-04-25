@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('main_pages.urls')),
     path('', include('emotion_recognition.urls')),
     path('', include('simpsons_go_neural.urls')),
+    path('', include('mnist.urls')),
     path('', include('AcademicWebSite.urls')),
 ]
 

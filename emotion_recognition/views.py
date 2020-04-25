@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView
 from .forms import FaceForm
-from .models import FaceMood
+from .models import FaceMood, FaceProject
 from .local_python_scripts import ev_mood
 
 
@@ -22,6 +22,8 @@ def EmotionRecognitionApplicationView(request):
 
 def EmotionEvaluatedView(request, pk):
     faceEx = get_object_or_404(FaceMood, pk=pk)
-    return render(request, 'emotion_evaluated.html', {'faceEx': faceEx})
+    faceProject = FaceProject.objects.get(pk=1)
+    return render(request, 'emotion_evaluated.html',
+        {'faceEx': faceEx, 'faceProject': faceProject})
 
 

@@ -3,44 +3,51 @@
 {% block content %}
 
 
-<header class="jumbotron jumbotron-fluid bg-primary text-white">
-  <div class="container d-flex align-items-center pt-5 flex-column">
-
-    <h1 class="text-uppercase mb-0"><strong>Who are we?</strong></h1>
-    
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center pt-5 pb-0">
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <!-- Heading -->
+    <h1 class="display-4">Who are we?</h1>
     <!-- Icon Divider -->
-    <div class="row p-2">
+    <div class="row">
       <div class="col"><hr class="custom-divider"></div>
       <div class="col-auto">
-	<i class="fas fa-database"></i>
+        <i class="fas fa-align-justify"></i>
       </div>
       <div class="col"><hr class="custom-divider"></div>
-    </div>
-
+    </div>    
   </div>
 </header>
 
-<div class="container-fluid d-flex text-white">
-  <div class="row no-gutters p-2">
-    <div class="col-md-4">
-      <img src="{% static 'images/sotres.jpeg' %}" class="rounded float-left" height="150">
-    </div>
-    <div class="col-md-8">
-      <h5><strong>Javier Sotres</strong></h5>
-      <p>PhD in Physics. Associate Professor at Malmo University</p>
-    </div>
-  </div>
+<div class="container-fluid pb-5">
 
-  <div class="row no-gutters p-2">
-    <div class="col-md-4">
-      <img src="{% static 'images/juan.jpeg' %}" class="rounded float-left" height="150">
+  <div class="row align-text-center ml-3 mr-3">
+    <div class="col-0 col-sm-0 col-md-2"></div>
+    <div class="col-12 col-sm-12 col-md-4">
+      <div class="card border-warning text-center ml-3 mr-3" style="width: 16rem;">
+        <img src="{% static 'images/sotres.jpeg' %}" class="card-img-top " alt="Javier Sotres">
+        <div class="card-body">
+          <h3 class="card-title">Javier Sotres</h3>
+          <a href="http://www.jsotres.com" class="btn btn-light btn-outline-success">Home Page</a>
+        </div>
+      </div>
     </div>
-    <div class="col-md-8">
-      <h5><strong>Juan F. Gonzalez-Martinez</strong></h5>
-      <p>PhD in Physics. Researcher at Malmo University</p>
+
+    
+
+    <div class="col-0 col-sm-0 col-md-4">
+
+      <div class="card border-warning text-center ml-3 mr-3" style="width: 16rem;">
+        <img src="{% static 'images/juan.jpeg' %}" class="card-img-top " alt="Juan F. Gonzalez-Martinez">
+        <div class="card-body">
+          <h3 class="card-title">Juan F. Gonzalez-Martinez</h3>
+        </div>
+      </div>
+
     </div>
+    <div class="col-0 col-sm-0 col-md-2"></div>
   </div>
 </div>
+
 
 
 

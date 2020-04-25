@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center pt-5 pb-0">
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <!-- Heading -->
+    <h1 class="display-4">Digit Identification</h1>
+    <!-- Icon Divider -->
+    <div class="row">
+      <div class="col"><hr class="custom-divider"></div>
+      <div class="col-auto">
+        <i class="fas fa-align-justify"></i>
+      </div>
+      <div class="col"><hr class="custom-divider"></div>
+    </div>
+    <div class="container flex-column justify-content-end">
+      {{ mnistProject.mnistProjectTextInput|safe }}
+    </div>   
+  </div>
+</header>
+
+
+<div class="mx-auto">
+	<canvas id="can" width="200" height="200" style="top:10%;left:10%;border:2px solid;">Sorry, your browser doesn't support the canvas element.</canvas>
+</div>
+
+
+<div class="mx-auto">
+	<div class="row ">
+		<div class=col m-3"></div>
+		<div class=col mx-3">
+			<button type="button" class="btn btn-secondary btn-outline-light" id="evaluateDigitButton">Evaluate</button>
+		</div>
+		<div class=col m-3">
+			<button type="button" class="btn btn-secondary btn-outline-light" onclick="erase();">Clear</button>
+		</div>
+		<div class=col m-3"></div>		
+	</div>
+</div>
+
+<div class="container-fluid pt-4">
+	<div class="row text-center">
+        <div class="col-12">
+            <h2>
+                <p id="result" class="font-weight-bold text-white mx-auto"></p>
+            </h2>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    let canvas, ctx, flag = false,
+        scaleX = 0,
+        scaleY = 0,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
+
+    const x = "black", y = 7;
+
+    window.onload = init();
+    
+    function init() {
+        canvas = document.getElementById('can');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";
+    
+        canvas.addEventListener("mousemove", function (e) {
+        	console.log('en mousemove')
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+        	console.log('en mousedown')
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+        	console.log('en mouseup')
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+        	console.log('en mouseout')
+            findxy('out', e)
+        }, false);
+    }
+    
+    
+    
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        console.log(prevX)
+        console.log(prevY)
+        ctx.lineTo(currX, currY);
+        console.log(currX)
+        console.log(currY)
+        
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+    function erase() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "black";           
+    }
+
+    const token = '{{csrf_token}}';
+    
+    $("#evaluateDigitButton").click(function() {
+        $("#result").text("Please wait...");
+    	document.getElementById("can");
+        let canvasImage = canvas.toDataURL();
+    	$.ajax ({
+    		headers: { "X-CSRFToken": token },
+    		type: "POST",
+        	url: "/mnist/application/",
+        	// contentType: "application/json",
+        	// crossDomain: true,
+        	data: {canvasImage: canvasImage},
+    		success: function(data){
+        		$("#result").text("Is this a " + data.output + "?");
+        	}
+    	});
+    });
+    
+    
+    
+    
+    function findxy(res, e) {
+    	if (res == 'down') {
+    		let rect = canvas.getBoundingClientRect(),
+    		scaleX = canvas.width / rect.width;
+        	scaleY = canvas.height / rect.height; 
+    		prevX = currX * scaleX;
+            prevY = currY * scaleY;
+            currX = (e.clientX - canvas.offsetLeft) * scaleX;
+            currY = (e.clientY - canvas.offsetTop) * scaleY;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+            	let rect = canvas.getBoundingClientRect(),
+    			scaleX = canvas.width / rect.width;
+        		scaleY = canvas.height / rect.height; 
+                prevX = currX;
+                prevY = currY;
+                currX = (e.clientX - canvas.offsetLeft) * scaleX;
+                currY = (e.clientY - canvas.offsetTop) * scaleY;
+                console.log('dibujando')
+                draw();
+            }
+        }
+    }
+
+    function  getMousePos(canvas, e) {
+        var rect = canvas.getBoundingClientRect(),
+        scaleX = canvas.width / rect.width,
+        scaleY = canvas.height / rect.height;  
+        return {
+        	x: (e.clientX - rect.left) * scaleX,
+        	y: (e.clientY - rect.top) * scaleY
+        }
+    }
+</script>
+
+{% endblock content %}

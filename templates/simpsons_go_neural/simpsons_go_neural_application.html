@@ -3,39 +3,56 @@
 {% block content %}
 
 
-<header class="jumbotron jumbotron-fluid bg-primary text-white">
-  <div class="container d-flex align-items-center pt-5 flex-column">
-
-    <h1 class="text-uppercase mb-0"><strong>Simpsons Go Neural</strong></h1>
-    
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center pt-5 pb-0">
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <!-- Heading -->
+    <h1 class="display-4">Simpsons Go Neural</h1>
     <!-- Icon Divider -->
-    <div class="row p-2">
+    <div class="row">
       <div class="col"><hr class="custom-divider"></div>
       <div class="col-auto">
-	<i class="fas fa-database"></i>
+        <i class="fas fa-align-justify"></i>
       </div>
       <div class="col"><hr class="custom-divider"></div>
     </div>
-
+    <div class="container flex-column justify-content-end">
+      {{ simpsonProject.simpsonsProjectTextInput|safe }}
+    </div>   
   </div>
 </header>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col align-self-center">
+
+
+<div class="container-fluid pb-2">
+  <div class="row align-self-center">
+    <div class="col-0 col-sm-0 col-md-2 align-self-center mx-auto"></div>
+    <div class="col-12 col-sm-3 col-md-4 align-self-center mx-auto">
       <form action="{% url 'simpsons_go_neural_application' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <p>
-          <input id="id_image" type="file" name="simpson_input_picture" class="form-control-file" onchange="loadFile(event)">
-        </p>
+          <p><input id="id_image" type="file" name="simpson_input_picture" class="form-control-file" onchange="loadFile(event)"></p>
         <p><input class="" type="submit" value="Submit" /></p>
       </form>
     </div>
-    <div class="col align-self-center bg-tertiary">
+    <div class="col-12 col-sm-9 col-md-6 col-lg-6 align-self-center mx-auto">
       <img id="output" class="img-fluid rounded mh-80" src={{ simpsonEx.simpson_output_picture.url }}/>
     </div>
   </div>
 </div>
+
+{% if simpsonEx.simpson_evaluated %}
+<div class="container-fluid pb-5 text-white">
+  <div class="row align-self-center">
+    <div class="col-0 col-sm-2 align-self-center mx-auto"></div>
+    <div class="col-12 col-sm-8 align-self-center mx-auto">
+      <h2>
+        <p>{{ simpsonProject.simpsonsProjectTextEvaluation|safe }}</p>
+      </h2>
+    </div>
+    <div class="col-0 col-sm-2 align-self-center mx-auto"></div>
+    
+  </div>
+</div>
+{% endif %}
 
 <script>
 var loadFile = function(event) {

@@ -2,28 +2,37 @@
 {% load static %}
 {% block content %}
 
-
-<header class="jumbotron jumbotron-fluid bg-primary text-white">
-  <div class="container d-flex align-items-center pt-5 flex-column">
-
-    <h1 class="text-uppercase mb-0"><strong>Emotion Recognition</strong></h1>
-    
+<header class="jumbotron jumbotron-fluid bg-primary text-white text-center pt-5 pb-0">
+  <div class="container pt-5 d-flex align-items-center flex-column">
+    <!-- Heading -->
+    <h1 class="display-4">Emotion Recognition</h1>
     <!-- Icon Divider -->
-    <div class="row p-2">
+    <div class="row">
       <div class="col"><hr class="custom-divider"></div>
       <div class="col-auto">
-	<i class="fas fa-database"></i>
+        <i class="fas fa-align-justify"></i>
       </div>
       <div class="col"><hr class="custom-divider"></div>
     </div>
-
-    <h2>Did we get it right?</h2>
-    <p pt-5><img src={{ faceEx.face_output_picture.url }}></p>
-
-
     
   </div>
 </header>
+
+<div class="container-fluid text-justify text-white pl-5 pr-5 pb-3">
+  <div class="row align-items-center">
+    <div class="col-0 col-sd-0 col-md-2"></div>
+    <div class="col-md-4">
+      <h2>
+        <p class="">{{ faceProject.faceProjectTextEvaluation|safe }}</p>
+      </h2>
+    </div>
+    <div class="col-md-4 text-center">
+      <img src="{{ faceEx.face_output_picture.url }}" class="img-fluid">
+    </div>
+    <div class="col-0 col-sd-0 col-md-2"></div>
+  </div>
+</div>
+
 
 {% endblock content %}
 

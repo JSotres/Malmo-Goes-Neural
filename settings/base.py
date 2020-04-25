@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'main_pages.apps.MainPagesConfig',
     'emotion_recognition.apps.EmotionRecognitionConfig',
     'simpsons_go_neural.apps.SimpsonsGoNeuralConfig',
+    'mnist.apps.MnistConfig',
     'AcademicWebSite.apps.AcademicwebsiteConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -97,6 +98,7 @@ TEMPLATES = [
                  os.path.join(BASE_DIR, 'templates/AcademicWebSite'),
                  os.path.join(BASE_DIR, 'templates/simpsons_go_neural'),
                  os.path.join(BASE_DIR, 'templates/emotion_recognition'),
+                 os.path.join(BASE_DIR, 'templates/mnist'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
