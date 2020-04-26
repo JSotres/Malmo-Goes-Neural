@@ -9,7 +9,7 @@ class ProjectAdmin(admin.ModelAdmin):
     fieldsets = [
         ("Name", {"fields": ["name", "longName"]}),
         ("Type", {"fields": ["project_type"]}),
-        ("Description", {"fields": ["short_description", "long_description"]}),
+        ("Description", {"fields": ["short_description", "short_description2", "long_description"]}),
         ("URL", {"fields": ["url"]}),
         ("Image", {"fields": ["project_image"]})
     ]

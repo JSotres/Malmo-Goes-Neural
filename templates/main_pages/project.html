@@ -8,7 +8,10 @@
     <h1 class="display-4">{{ object.longName }}</h1>    
   </div>
   <div class="container pt-5 d-flex align-items-center flex-column">
-    <a href="{% url object.url %}" class="btn btn-secondary btn-outline-light">Try it out!</a>  
+  	<p>{{ object.short_description2|safe }}</p>
+  </div>
+  <div class="container pt-1 d-flex align-items-center flex-column">
+    <a href="{% url object.url %}" class="btn btn-secondary btn-outline-light btn-lg">Try it out!</a>  
   </div>
 </header>
 
