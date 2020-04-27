@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="jumbotron pt-5">
-  <h1 class="display-4">Request Received</h1>
-  <hr class="my-4">
-  <p>Thanks for contacting us! We will get in contact with you as soon as possible.</p>
-  <a class="btn btn-primary btn-lg" href="{% url 'home'%}" role="button">Back to Main Page</a>
-</div>
+<header class="jumbotron jumbotron-fluid bg-primary text-white pb-0">
+  <div class="container d-flex align-items-center pt-5 flex-column">
+
+    <h1 class="text-uppercase mb-0"><strong>Thanks for contacting us!</strong></h1>
+    
+    <!-- Icon Divider -->
+    <div class="row pt-2">
+      <div class="col"><hr class="custom-divider"></div>
+      <div class="col-auto">
+	<i class="fas fa-database"></i>
+      </div>
+      <div class="col"><hr class="custom-divider"></div>
+    </div>
+    <p><strong>We will get in contact with you as soon as possible.</strong></p>
+
+  </div>
+</header>
+
+<div class="container-fluid pt-1 pb-3">
+    <div class="row text-center">
+      <div class="col-12">
+        <a class="btn btn-primary btn-lg" href="{% url 'home'%}" role="button">Back to Home Page</a>
+      </div>
+    </div>
+  </div>
 
 
 {% endblock content %}
