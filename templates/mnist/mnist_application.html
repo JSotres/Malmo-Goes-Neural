@@ -15,7 +15,7 @@
       <div class="col"><hr class="custom-divider"></div>
     </div>
     <div class="container flex-column justify-content-end">
-      {{ mnistProject.mnistProjectTextInput|safe }}
+        <h3>{{ mnistProjectEx.mnistProjectTextInput|safe }}</h3>
     </div>   
   </div>
 </header>
@@ -119,7 +119,7 @@
     
     $("#evaluateDigitButton").click(function() {
         $("#result").text("Please wait...");
-    	document.getElementById("can");
+    	// document.getElementById("can");
         let canvasImage = canvas.toDataURL();
     	$.ajax ({
     		headers: { "X-CSRFToken": token },

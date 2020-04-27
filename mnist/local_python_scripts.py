@@ -9,8 +9,6 @@ def prepare(file):
     img = cv2.bitwise_not(img)
     new_img = cv2.resize(img, (RESIZE, RESIZE)) 
     new_img = new_img/255.
-    # cv2.imshow('image', new_img)
-    # cv2.waitKey(0)
     return new_img.reshape(-1, RESIZE, RESIZE, 1)
 
 def ev_digit(imagetemp):
@@ -24,18 +22,5 @@ def ev_digit(imagetemp):
 	return(predicted_label[0])
 
 
-
-'''
-model_file = 'mnist.model'
-
-model = load_model(model_file)
-
-new_image = prepare(file)
-
-predicted_label = model.predict(new_image)
-print(predicted_label)
-predicted_label = np.argmax(predicted_label, axis = 1)
-print(predicted_label[0])
-'''
 
 
