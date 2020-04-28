@@ -14,6 +14,8 @@ from tensorflow.keras.preprocessing import image  #load images easily
 def ev_simpson(imagetest, pk):
 	BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 	imagetest = BASE_DIR + imagetest
+	print('la imagen q entra es:')
+	print(imagetest)
 	
 	target_names = ['Abraham Grampa Simpson', 'Agnes Skinner', 'Apu Nahasapeemapetilon',
 	'Barney Gumble', 'Bart Simpson', 'Brandine Spuckler','Carl Carlson',
@@ -52,9 +54,7 @@ def ev_simpson(imagetest, pk):
 
 	imgk = np.array(image.load_img(imagetest))
 	width = img.shape[1]
-	print(width)
 	height = img.shape[0]
-	print(height)
 	new_width = 1000
 	factor = new_width/width
 	new_height = int(height*factor)
@@ -62,13 +62,7 @@ def ev_simpson(imagetest, pk):
 	img = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
 	imgk = cv2.resize(imgk, dim, interpolation = cv2.INTER_AREA)
 	color1 = cv2.resize(color1, dim, interpolation = cv2.INTER_AREA)
-	print(img.shape[1])
-	print(img.shape[0])
-	print(imgk.shape[1])
-	print(imgk.shape[0])
-	print(color1.shape[1])
-	print(color1.shape[0])
-
+	
 	faces = faceCascade.detectMultiScale(img, 1.02, 8, minSize=(80,80))
 
 	for (x, y, w, h) in faces:
@@ -88,8 +82,12 @@ def ev_simpson(imagetest, pk):
 	savepath = 'simpsonCharacter/simpsonOutputPictures/'
 	fullsavepath = BASE_DIR + '/media/simpsonCharacter/simpsonOutputPictures/'
 	savestring = fullsavepath + 'output' + str(pk) + '.jpg'
+	print('el path q se salva en cv2 es:')
+	print(savestring)
 	cv2.imwrite(savestring, color1)
 	savestring2 = savepath + 'output' + str(pk) + '.jpg'
+	print('el path q se devuelve, savestring2, es:')
+	print(savestring2)
 	return savestring2
 
 

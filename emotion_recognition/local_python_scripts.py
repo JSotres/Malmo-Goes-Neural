@@ -17,19 +17,17 @@ def ev_mood(img, pk):
     model = BASE_DIR + '/emotion_recognition/res10_300x300_ssd_iter_140000.caffemodel'
     confidence = 0.7
     evaluation_model_path = BASE_DIR + '/emotion_recognition/model_v6_23.hdf5'
-    print(evaluation_model_path)
-
+    
     classifier = load_model(evaluation_model_path)
     emotion_dict= {'Angry': 0, 'Sad': 5, 'Neutral': 4, 'Disgust': 1, 'Surprise': 6, 'Fear': 2, 'Happy': 3}
     label_map = dict((v,k) for k,v in emotion_dict.items())
-    print('aqui')
-
+    
     net = cv2.dnn.readNetFromCaffe(prototxt, model)
 
     # load the input image and construct an input blob for the image
     # by resizing to a fixed 300x300 pixels and then normalizing it
     img = BASE_DIR + img
-    print('hola')
+    print('la imagen de entrada mas el base dir es:')
     print(img)
     image = cv2.imread(img)
     # cv2.imshow('image', image)
@@ -69,8 +67,6 @@ def ev_mood(img, pk):
             predicted_label = label_map[predicted_class]
     
     
-            print(predicted_label)
-
             # draw the bounding box of the face along with the associated
             # probability
             # text = "{:.2f}%".format(confidence * 100)
@@ -83,9 +79,12 @@ def ev_mood(img, pk):
     savepath = 'emotionrecognition/faceoutputpictures/'
     fullsavepath = BASE_DIR + '/media/emotionrecognition/faceoutputpictures/'
     savestring = fullsavepath + 'output.jpg'
+    print('el path q se salva en cv2 es:')
     print(savestring)
     cv2.imwrite(savestring, gray)
     savestring2 = savepath + 'output.jpg'
+    print('el pathh q se devuelve es:')
+    print(savestring2)
     return savestring2
 
 # ev_mood(img, pk)
