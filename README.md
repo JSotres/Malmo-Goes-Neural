@@ -1,6 +1,6 @@
 # Malmo Goes Neural
 
-Code for the [Malmo Goes Neural web](http://www.mah.se/sotres)
+Code for the [Malmo Goes Neural web](http://www.malmogoesneural.net)
 
 Built with Django
 
