@@ -3,7 +3,6 @@ import numpy as np
 import cv2
 import os
 import keras
-# from keras.models import load_model
 from tensorflow.keras.models import load_model
 from keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import model_from_json  #load already trained models
@@ -14,8 +13,6 @@ from tensorflow.keras.preprocessing import image  #load images easily
 def ev_simpson(imagetest, pk):
 	BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 	imagetest = BASE_DIR + imagetest
-	print('la imagen q entra es:')
-	print(imagetest)
 	
 	target_names = ['Abraham Grampa Simpson', 'Agnes Skinner', 'Apu Nahasapeemapetilon',
 	'Barney Gumble', 'Bart Simpson', 'Brandine Spuckler','Carl Carlson',
@@ -82,12 +79,8 @@ def ev_simpson(imagetest, pk):
 	savepath = 'simpsonCharacter/simpsonOutputPictures/'
 	fullsavepath = BASE_DIR + '/media/simpsonCharacter/simpsonOutputPictures/'
 	savestring = fullsavepath + 'output' + str(pk) + '.jpg'
-	print('el path q se salva en cv2 es:')
-	print(savestring)
 	cv2.imwrite(savestring, color1)
 	savestring2 = savepath + 'output' + str(pk) + '.jpg'
-	print('el path q se devuelve, savestring2, es:')
-	print(savestring2)
 	return savestring2
 
 

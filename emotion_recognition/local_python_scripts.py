@@ -7,9 +7,6 @@ import keras
 from tensorflow.keras.models import load_model
 from keras.preprocessing.image import img_to_array
 
-# img = '/media/emotionrecognition/faceinputpictures/juan.jpeg'
-# pk = 1
-
 def ev_mood(img, pk):
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     # load our serialized model from disk
@@ -30,8 +27,6 @@ def ev_mood(img, pk):
     print('la imagen de entrada mas el base dir es:')
     print(img)
     image = cv2.imread(img)
-    # cv2.imshow('image', image)
-    # cv2.waitKey(0)
     (h, w) = image.shape[:2]
     blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 1.0,
                                  (300, 300), (104.0, 177.0, 123.0))
@@ -69,22 +64,14 @@ def ev_mood(img, pk):
     
             # draw the bounding box of the face along with the associated
             # probability
-            # text = "{:.2f}%".format(confidence * 100)
             y = startY - 10 if startY - 10 > 10 else startY + 10
             cv2.rectangle(image, (startX, startY), (endX, endY), (0, 0, 255), 2)
             gray = cv2.putText(image, predicted_label, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
 
-    # cv2.imshow('image',gray)
-    # cv2.waitKey(0)
     savepath = 'emotionrecognition/faceoutputpictures/'
     fullsavepath = BASE_DIR + '/media/emotionrecognition/faceoutputpictures/'
     savestring = fullsavepath + 'output.jpg'
-    print('el path q se salva en cv2 es:')
-    print(savestring)
     cv2.imwrite(savestring, gray)
     savestring2 = savepath + 'output.jpg'
-    print('el pathh q se devuelve es:')
-    print(savestring2)
     return savestring2
 
-# ev_mood(img, pk)

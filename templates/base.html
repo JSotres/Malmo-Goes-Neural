@@ -1,15 +1,15 @@
-<!doctype html>
+<!DOCTYPE html>
 {% load static %}
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <!-- meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Javier Sotres">
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
 
-        <!-- Bootstrap CSS -->
+    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link href="{% static 'tinymce/css/prism.css' %}" rel="stylesheet">
@@ -23,13 +23,10 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-  
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
 
     <style>
+      
       body {
         font-family: 'Montserrat', sans-serif;
         display: flex;
@@ -46,19 +43,16 @@
 
       .main {
         flex: 1;
-      }
+      }  
 
-      
-
-
-    </style>
-    
+    </style>    
 
     <title>M.G.N.</title>
+
   </head>
 
   <body class="bg-primary" id="page-top">
-    <!-- Navigation -->
+    <!-- Navigation Bar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-secondary text-uppercase fixed-top" id="mainNav">
       <div class="container-fluid">
         <a class="navbar-brand" href="#page-top"><strong>Malmo Goes Neural</strong></a>
@@ -85,30 +79,31 @@
       </div>
     </nav>
 
-  {% block content %}
-  {% endblock content %}
+    {% block content %}
+    {% endblock content %}
 
-  <footer>
-    <div class="container-fluid text-white">
-      <div class="row text-center pt-5">
-        <div class="col-md-6">
-          <img src="{% static 'images/MGN2.svg' %}" width="150rem" class="img-fluid">
+    <!-- Footer-->
+    <footer>
+      <div class="container-fluid text-white">
+        <div class="row text-center pt-5">
+          <div class="col-md-6">
+            <img src="{% static 'images/MGN2.svg' %}" width="150rem" class="img-fluid">
+          </div>
+          <div class="col-md-6">
+            <br>
+            <h5>Malmo Goes Neural</h5>
+            <br>
+            <p>Malmö</p>
+            <p>Sweden</p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <br>
-          <h5>Malmo Goes Neural</h5>
-          <br>
-          <p>Malmö</p>
-          <p>Sweden</p>
+        <div class="row text-center">
+          <div class="col-12">
+            <p> © Copyright: MalmoGoesNeural</p>
+          </div>
         </div>
       </div>
-      <div class="row text-center">
-        <div class="col-12">
-          <p> © Copyright: MalmoGoesNeural</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
   
 
 
