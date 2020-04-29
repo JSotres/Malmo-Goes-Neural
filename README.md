@@ -1,11 +1,11 @@
 # Malmo Goes Neural
 
-Code for the Malmo Goes Neural web (soon to be deployed)
+Code for the [Malmo Goes Neural web](http://www.mah.se/sotres)
 
 Built with Django
 
 ## Contributors
 
-[Javier Sotres](https://www.mah.se/sotres)
+[Javier Sotres](http://www.jsotres.com)
 
 [Juan F. Gonzalez-Martinez](https://github.com/juanfran2018)
